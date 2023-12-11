@@ -54,7 +54,9 @@ export const ModalContent = ({ car }) => {
           </p>
         </ul>
       </div>
-      <ButtonRentalCar type="button">Rental car</ButtonRentalCar>
+      <ButtonRentalCar href={`tel:${+380730000000}`}>
+        Rental car
+      </ButtonRentalCar>
     </div>
   );
 };

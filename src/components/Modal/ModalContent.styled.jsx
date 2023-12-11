@@ -12,7 +12,8 @@ export const ImgWrapper = styled.div`
   border-radius: 14px;
 `;
 
-export const ButtonRentalCar = styled.button`
+export const ButtonRentalCar = styled.a`
+  display: flex;
   font-family: Manrope;
   font-size: 14px;
   font-weight: 600;
