@@ -265,7 +265,7 @@ Error generating stack: `+o.message+`
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
-  width: 164px;
+  width: 168px;
   height: 44px;
   background: #3470ff;
   border-radius: 12px;
