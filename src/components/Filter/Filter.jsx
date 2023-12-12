@@ -1,4 +1,4 @@
-import { Formik, Form, Field } from 'formik';
+import { Field, Formik } from 'formik';
 import makes from '../../../data/makes.json';
 import { useDispatch } from 'react-redux';
 import { setFilters } from '../../redux/filter/filterSlice';
@@ -51,34 +51,34 @@ const FilterForm = () => {
       <FormContainer>
         <div>
           <label htmlFor="carBrand">Car brand</label>
-          <FormField as="select" name="carBrand">
+          <Field as="select" name="carBrand">
             <option value="">Enter the text</option>
             {carBrands.map((brand) => (
               <option key={brand} value={brand}>
                 {brand}
               </option>
             ))}
-          </FormField>
+          </Field>
         </div>
 
         <div>
           <label htmlFor="hourlyPrice">Price/1 hour</label>
-          <FormField as="select" name="hourlyPrice">
+          <Field as="select" name="hourlyPrice">
             <option value="">To $</option>
             {hourlyPrices.map((price) => (
               <option key={price} value={price}>
                 {`${price}`}
               </option>
             ))}
-          </FormField>
+          </Field>
         </div>
 
         <div>
           <p>Car mileage / km </p>
           <label htmlFor="mileageFrom"></label>
-          <FormField type="number" name="mileage.from" />
+          <Field type="number" name="mileage.from" />
           <label htmlFor="mileageTo"></label>
-          <FormField type="number" name="mileage.to" />
+          <Field type="number" name="mileage.to" />
         </div>
 
         <button type="submit">Search</button>
