@@ -1,8 +1,12 @@
+import { Img } from '../../components/SharedLayout/SharedLayout.styled';
 import { Container } from './HomePage.styled';
 
 const HomePage = () => {
   return (
     <Container>
+      <div>
+        <Img src="/src/assets/Rent-A-Car-Web-Banner-12.jpg" alt="rental car" />
+      </div>
       <h1>Вітаємо вас в DriveHub!</h1>
       <p>
         Ласкаво просимо до світу найзручнішого та інноваційного сервісу прокату

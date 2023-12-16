@@ -1,8 +1,20 @@
-import { Field, Formik } from 'formik';
+import { Formik } from 'formik';
 import makes from '../../../data/makes.json';
+import SendIcon from '@mui/icons-material/Send';
+
 import { useDispatch } from 'react-redux';
 import { setFilters } from '../../redux/filter/filterSlice';
-import { FormContainer, FormField } from './Filter.styled';
+import {
+  BrandPriceContainer,
+  FormButtonContainer,
+  FormContainer,
+  FormFieldBrand,
+  FormFieldMileage,
+  FormFieldPrice,
+  FormTitle,
+} from './Filter.styled';
+import { Button, InputAdornment, MenuItem, TextField } from '@mui/material';
+
 const carBrands = makes;
 const hourlyPrices = [
   '10',
@@ -48,44 +60,148 @@ const FilterForm = () => {
         dispatch(setFilters(values));
       }}
     >
-      <FormContainer>
-        <div>
-          <label htmlFor="carBrand">Car brand</label>
-          <Field as="select" name="carBrand">
-            <option value="">Enter the text</option>
-            {carBrands.map((brand) => (
-              <option key={brand} value={brand}>
-                {brand}
-              </option>
-            ))}
-          </Field>
-        </div>
+      {({ values, handleChange }) => (
+        <FormContainer>
+          <BrandPriceContainer>
+            <FormTitle htmlFor="carBrand">Car brand</FormTitle>
+            <FormFieldBrand
+              name="carBrand"
+              value={values.carBrand}
+              onChange={handleChange}
+              displayEmpty
+              sx={{ '& fieldset': { border: 'none' } }}
+            >
+              <MenuItem value="" disabled>
+                Enter car brand
+              </MenuItem>
+              {carBrands.map((brand) => (
+                <MenuItem key={brand} value={brand}>
+                  {brand}
+                </MenuItem>
+              ))}
+            </FormFieldBrand>
+          </BrandPriceContainer>
+          {/*  */}
+          <BrandPriceContainer>
+            <FormTitle htmlFor="hourlyPrice">Price/1 hour</FormTitle>
+            <FormFieldPrice
+              name="hourlyPrice"
+              value={values.hourlyPrice}
+              onChange={handleChange}
+              displayEmpty
+              sx={{ '& fieldset': { border: 'none' } }}
+              renderValue={(value) => {
+                if (value !== '') {
+                  return `To ${value}$`;
+                }
+                return 'To  $';
+              }}
+            >
+              {hourlyPrices.map((price) => (
+                <MenuItem key={price} value={price}>
+                  {`${price}`}
+                </MenuItem>
+              ))}
+            </FormFieldPrice>
+          </BrandPriceContainer>
 
-        <div>
-          <label htmlFor="hourlyPrice">Price/1 hour</label>
-          <Field as="select" name="hourlyPrice">
-            <option value="">To $</option>
-            {hourlyPrices.map((price) => (
-              <option key={price} value={price}>
-                {`${price}`}
-              </option>
-            ))}
-          </Field>
-        </div>
-
-        <div>
-          <p>Car mileage / km </p>
-          <label htmlFor="mileageFrom"></label>
-          <Field type="number" name="mileage.from" />
-          <label htmlFor="mileageTo"></label>
-          <Field type="number" name="mileage.to" />
-        </div>
-
-        <button type="submit">Search</button>
-        <button type="button" onClick={handleReset}>
-          Reset
-        </button>
-      </FormContainer>
+          <div>
+            <FormTitle>Car mileage / km </FormTitle>
+            <FormFieldMileage>
+              <label htmlFor="mileageFrom"></label>
+              <TextField
+                type="number"
+                name="mileage.from"
+                value={values.mileage.from}
+                onChange={handleChange}
+                sx={{
+                  width: '160px',
+                  height: '48px ',
+                  borderRadius: '14px 0px 0px 14px',
+                  background: '#f7f7fb',
+                  border: 'none',
+                  justifyContent: 'center',
+                  '& fieldset': { border: 'none' },
+                  '& p ': {
+                    color: '#121417',
+                    fontFamily: 'Manrope',
+                    fontSize: '18px',
+                    fontWeight: '500',
+                    lineHeight: '20px',
+                  },
+                }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">From</InputAdornment>
+                  ),
+                }}
+              />
+              <label htmlFor="mileageTo"></label>
+              <TextField
+                type="number"
+                name="mileage.to"
+                value={values.mileage.to}
+                onChange={handleChange}
+                sx={{
+                  width: '160px',
+                  height: '48px ',
+                  borderRadius: '0px 14px 14px 0px',
+                  borderLeft: '2px solid rgba(138, 138, 137, 0.20)',
+                  background: '#f7f7fb',
+                  justifyContent: 'center',
+                  '& fieldset': { border: 'none' },
+                  '& p ': {
+                    color: '#121417',
+                    fontFamily: 'Manrope',
+                    fontSize: '18px',
+                    fontWeight: '500',
+                    lineHeight: '20px',
+                  },
+                }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">To</InputAdornment>
+                  ),
+                }}
+              />
+            </FormFieldMileage>
+          </div>
+          <FormButtonContainer>
+            <Button
+              sx={{
+                display: 'flex',
+                width: '136px',
+                height: '48px',
+                padding: '14px 44px',
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRadius: '12px',
+              }}
+              variant="contained"
+              type="submit"
+              endIcon={<SendIcon />}
+            >
+              Search
+            </Button>
+            <Button
+              sx={{
+                display: 'flex',
+                width: '136px',
+                height: '48px',
+                padding: '14px 44px',
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRadius: '12px',
+              }}
+              variant="contained"
+              type="reset"
+              onClick={handleReset}
+            >
+              Reset
+            </Button>
+          </FormButtonContainer>
+        </FormContainer>
+      )}
     </Formik>
   );
 };

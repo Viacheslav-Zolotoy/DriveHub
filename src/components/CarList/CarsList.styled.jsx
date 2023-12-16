@@ -8,4 +8,5 @@ export const ListContainer = styled.ul`
   width: 100%;
   row-gap: 50px;
   column-gap: 20px;
+  margin-top: 50px;
 `;
