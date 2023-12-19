@@ -69,11 +69,26 @@ const FilterForm = () => {
               value={values.carBrand}
               onChange={handleChange}
               displayEmpty
-              sx={{ '& fieldset': { border: 'none' } }}
+              sx={{
+                '& fieldset': { border: 'none' },
+              }}
+              renderValue={(value) => {
+                if (value !== '') {
+                  return value;
+                }
+                return ' Enter car brand';
+              }}
+              MenuProps={{
+                sx: {
+                  maxHeight: '290px',
+                  marginTop: '4px',
+                  padding: '14px 18px',
+                  borderRadius: '14px',
+                  border: ' 1px solid rgba(18, 20, 23, 0.05)',
+                  boxShadow: ' 0px 4px 36px 0px rgba(0, 0, 0, 0.02)',
+                },
+              }}
             >
-              <MenuItem value="" disabled>
-                Enter car brand
-              </MenuItem>
               {carBrands.map((brand) => (
                 <MenuItem key={brand} value={brand}>
                   {brand}
@@ -95,6 +110,16 @@ const FilterForm = () => {
                   return `To ${value}$`;
                 }
                 return 'To  $';
+              }}
+              MenuProps={{
+                sx: {
+                  maxHeight: '290px',
+                  marginTop: '4px',
+                  padding: '14px 18px',
+                  borderRadius: '14px',
+                  border: ' 1px solid rgba(18, 20, 23, 0.05)',
+                  boxShadow: ' 0px 4px 36px 0px rgba(0, 0, 0, 0.02)',
+                },
               }}
             >
               {hourlyPrices.map((price) => (

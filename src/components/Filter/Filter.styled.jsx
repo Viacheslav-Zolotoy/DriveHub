@@ -5,7 +5,6 @@ import styled from 'styled-components';
 export const FormContainer = styled(Form)`
   gap: 18px;
   flex-wrap: wrap;
-
   display: flex;
   justify-content: center;
   max-width: 1200px;

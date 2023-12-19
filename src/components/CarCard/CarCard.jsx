@@ -5,6 +5,7 @@ import {
 } from '../../redux/favorites/favoritesSlice';
 import { getFavorites } from '../../redux/favorites/favoritesSelector';
 import {
+  CarCardInfo,
   CardContainer,
   CardImage,
   CardInfo,
@@ -51,7 +52,7 @@ export const CarCard = ({ car }) => {
             <FavoriteSvg strokeColor={'#3470FF'} fillColor={'#3470FF'} />
           )}
         </Favorite>
-        <div className="car-card__info">
+        <CarCardInfo className="car-card__info">
           <TitleContainer>
             <CardTitle>
               {' '}
@@ -62,11 +63,21 @@ export const CarCard = ({ car }) => {
             <p>{car.rentalPrice}</p>
           </TitleContainer>
           <CardInfo>
-            <p>{city}</p>|<p>{state}</p>|<p>{car.rentalCompany}</p>
-            <p>{car.type}</p>|<p>{car.model}</p>|<p>{car.mileage}</p>|
-            <p>{car.accessories[0]}</p>
+            <div>
+              {' '}
+              <p>{city}</p>
+              <p>{state}</p>
+              <p>{car.rentalCompany}</p>
+            </div>
+            <div>
+              {' '}
+              <p>{car.type}</p>
+              <p>{car.model}</p>
+              <p>{car.mileage}</p>
+              <p>{car.accessories[0]}</p>
+            </div>
           </CardInfo>
-        </div>
+        </CarCardInfo>
         <LernMore onClick={handleToggleModal} type="button">
           Learn More
         </LernMore>
