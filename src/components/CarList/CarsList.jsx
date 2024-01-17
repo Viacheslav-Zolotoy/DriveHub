@@ -8,15 +8,19 @@ export const CarList = ({ cars }) => {
 
   return (
     <>
-      {!isLoading && cars.length === 0 ? (
+      {isLoading ? (
         <p>Loading...</p>
       ) : (
         <ListContainer>
-          {cars.map((car) => (
-            <li key={car.id}>
-              <CarCard car={car} />
-            </li>
-          ))}
+          {cars.length === 0 ? (
+            <div> Sorry car not found! </div>
+          ) : (
+            cars.map((car) => (
+              <li key={car.id}>
+                <CarCard car={car} />
+              </li>
+            ))
+          )}
         </ListContainer>
       )}
     </>

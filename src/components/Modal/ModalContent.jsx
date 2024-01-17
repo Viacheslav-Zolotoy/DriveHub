@@ -21,7 +21,7 @@ export const ModalContent = ({ car }) => {
   const city = addressParts[1].trim();
   const state = addressParts[2].trim();
   const conditionsArray = car.rentalConditions.split('\n');
-  const formattedMileage = car.mileage.toLocaleString('en-US');
+  const formattedMileage = car.mileage('en-US');
   const formattedRentalPrice = `${parseInt(car.rentalPrice.slice(1))}$`;
 
   return (

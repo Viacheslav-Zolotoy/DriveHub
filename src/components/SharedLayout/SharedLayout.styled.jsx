@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  max-width: 1250px;
+  justify-content: center;
 `;
 export const Img = styled.img`
   width: 100%;
