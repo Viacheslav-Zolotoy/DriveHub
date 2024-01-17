@@ -5,7 +5,7 @@ const HomePage = () => {
   return (
     <Container>
       <div>
-        <Img src="/Rent-A-Car-Web-Banner-12.jpg" alt="rental car" />
+        <Img src="/public/Rent-A-Car-Web-Banner-12.jpg" alt="rental car" />
       </div>
       <h1>Вітаємо вас в DriveHub!</h1>
       <p>
