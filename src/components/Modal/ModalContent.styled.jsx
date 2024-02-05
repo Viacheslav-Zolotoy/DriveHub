@@ -64,6 +64,8 @@ export const Description = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
+  max-height: 40px;
+  overflow: hidden;
 `;
 export const SecondaryTitle = styled.h3`
   color: #121417;
