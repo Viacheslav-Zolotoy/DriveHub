@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 export const Container = styled.div`
   text-align: center;
+  max-width: 1200px;
 `;
 export const Img = styled.img`
   width: 60%;
