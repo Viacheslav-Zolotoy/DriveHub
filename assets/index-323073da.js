@@ -145,6 +145,7 @@ Error generating stack: `+i.message+`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  max-width: 1200px;
 `;Ln.h1`
   margin-bottom: 30px;
 
